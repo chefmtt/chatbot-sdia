@@ -17,11 +17,10 @@ class Week(object):
         self.table = np.zeros([7,24])
         self.docs=[]
         self.week_nb = week_nb
-        
+    
     def addDocument(self,doc,hour,day,week):
         pages=doc.pages
         title=doc.title
-        print(title,self.docs)
         if title in self.docs:
             doc_nb = self.docs.index(title)+1
         else :
@@ -29,8 +28,6 @@ class Week(object):
             doc_nb = len(self.docs)
         for d in range(0,5):
             for h in range(4,20):
-                if (title == "BlipBloup"): print("BlipBloup SPOTTED ",self.week_nb,week)
-                else: print("======"+str(title))
                 if (((week == self.week_nb) and (d > day) and (h > hour)) or (week == self.week_nb)):
                      
                     if pages == 0 :
@@ -42,13 +39,12 @@ class Week(object):
                         else :
                             pages = 0
                             self.table[d,h] = doc_nb
-        print(self.week_nb,title,self.docs)
         return pages
         
 class Calendar(object):
     def __init__(self,data_path):
         self.data_path = data_path
-        
+    
     def add_document(self,title,pages):
            
         doc = Document(title,pages)
@@ -57,10 +53,10 @@ class Calendar(object):
         week_nb = isocalendar[1]
         day_nb = isocalendar[2]
         hour_nb = date.hour
+        minut_nb = date.minute
         while doc.pages != 0:
             week_path = "week_"+str(week_nb)+".pkl"
             if os.path.exists(self.data_path+'/'+week_path):
-                if (title =="BlipBloup") : print("EXISTS !!!!! "+str(week_nb),self.data_path+'/'+week_path)
                 with open(self.data_path+'/'+week_path,'rb') as data:
                     week = pickle.load(data) 
             else :
