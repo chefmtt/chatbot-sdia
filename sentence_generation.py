@@ -4,11 +4,11 @@ import csv
 
 openai.api_key = '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'
 count =0
-while (count < 1000):
+while (count < 1):
     
     response = openai.Completion.create(
     model="text-davinci-002",
-    prompt="Suggest a database of sentences a user asks to a chatbot to print some document, always giving the title of the document and the number of pages\n\nSentence,Document Title,Pages\nHello! Can you print my 6000 pages document? It is called report.docx,report.docx,6000\nPrint document.pdf. 1200000 pages,document.pdf,1200000\nIt is possible to print my essay? The document name is essay.pdf and it is 50000 pages long.,essay.pdf,50000\n\nI need to print my contract. The document is called contract.doc and it is 200 pages long.,contract.doc,200\n\nHello, can you print my document called invoice.pdf? It is only 10 pages long.,invoice.pdf,10\n\nCan you print my resume? The document is called resume.doc and it is 2 pages long.,resume.doc,2\n",
+    prompt="Suggest a database of 100 sentences a user asks to a chatbot to print some document, always giving the title of the document and the number of pages\n\nSentence,Document Title,Pages\nHello! Can you print my 6000 pages document? It is called report.docx,report.docx,6000\nPrint document.pdf. 1200000 pages,document.pdf,1200000\nIt is possible to print my essay? The document name is essay.pdf and it is 50000 pages long.,essay.pdf,50000\n\nI need to print my contract. The document is called contract.doc and it is 200 pages long.,contract.doc,200\n\nHello, can you print my document called invoice.pdf? It is only 10 pages long.,invoice.pdf,10\n\nCan you print my resume? The document is called resume.doc and it is 2 pages long.,resume.doc,2\n",
     temperature=0.9,
     max_tokens=256,
     top_p=1,
