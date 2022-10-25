@@ -26,3 +26,7 @@ Can you print my document called letter.doc? It is only 1 page long.",letter.doc
 My document is called letter.doc and it is 1 page long. Can you print it for me?",letter.doc,1
 "
 Can you print my letter? The document is called letter.doc and it is 1 page long.",letter.doc,1
+"
+Can you print my 100 pages document? It is called thesis.docx,thesis.docx,100
+
+My document is called paper.doc and it is 500 pages long. Can you print it?",paper.doc,500
