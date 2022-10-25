@@ -1,0 +1,12 @@
+Utilisation librairie Tkinter pour interfaces graphiques en Python
+
+INTERFACE AGENDA :
+    Le bouton permet de récupérer la valeur de semaine choisie
+    Améliorations possibles : faire une liste déroulante pour choisir la semaine
+                                afficher les 52 semaines
+                                code plus synthétique pour les boutons et callback en itérant
+                                et nommant les variables et méthodes
+    Une fois la semaine choisie, on récupère cal.get_week(semaine) et on ferme la fenêtre des boutons
+    , on transpose (pour vue emploi du temps). Les en-têtes prennent les noms des jours et les horaires.
+    On remplit ensuite itérativement le calendrier. Si la valeur dans le tableau est 0 on n'affiche rien
+    sinon on affiche des carrés pour remplir la case.
