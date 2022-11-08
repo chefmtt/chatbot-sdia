@@ -6,6 +6,7 @@ import json
 import random
 from datetime import datetime
 import agenda
+import interface_agenda
 import spacy
 import train_model
 from joblib import load
@@ -25,8 +26,8 @@ print("now =", now)
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
-# # CHARGER MODELE CHATBOT ENTRAINE
-#model = keras.models.load_model('chatbot_clf')
+# CHARGER MODELE CHATBOT ENTRAINE
+model = keras.models.load_model('chatbot_clf')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
@@ -163,8 +164,8 @@ class impression(object):
 def predict_class(sentence):
     sentence_embedded = train_model.process_text(sentence, mode="embed", preprocessed=False)
 
-    predict = model.predict(np.asarray([sentence_embedded]))
-    predicted_class = np.argmax(predict)
+    prediction = model.predict(np.asarray([sentence_embedded]))
+    predicted_class = np.argmax(prediction)
     predicted_class = label_encoder.inverse_transform([predicted_class])
     return predicted_class
 
@@ -185,18 +186,8 @@ from tkinter import *
 
 # NOUVELLE FENETRE AVEC CLIC DE BOUTON
 def openNewWindow():
-    # Toplevel object NOUVELLE FENETR
-    newWindow = Toplevel(root)
-
-    newWindow.title("Agenda")
-
-    newWindow.geometry("700x800")
-    newWindow.configure(bg="white")
-
-    Label(newWindow,
-          text="Agenda des impressions", bg="white").pack()
-    return newWindow
-
+    root.destroy()
+    interface_agenda.print_agenda()
 
 def send():
     global list_impr
@@ -215,22 +206,6 @@ def send():
         if intent_tag is 'check_schedule':
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
             Agenda_window = openNewWindow()
-            List_impr_box = Text(Agenda_window, height="1000", width="1000", font="Arial", bg="white", bd=0)
-            impressions = []
-            idx = -1
-            for i in range(len(list_impr)):
-                list_impr[i].update_state()
-                list_impr[i].fix_date()
-                if list_impr[i].state == "passe":
-                    idx += 1
-            if idx >= 0:
-                list_impr = list_impr[idx:]
-            for i in range(len(list_impr)):
-                impressions.append(list_impr[i].get_str_format())
-            for i in range(len(impressions)):
-                print(impressions[i])
-                List_impr_box.insert(END, impressions[i])
-            List_impr_box.place(x=50, y=50, height=800, width=800)
 
         elif intent_tag is 'impression':
             no_doc_pages = "Veuillez bien spécifier le nom du document par \"doc.file_type\" suivi du numéro du document" \

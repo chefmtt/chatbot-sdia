@@ -107,7 +107,4 @@ class Calendar(object):
             if fnmatch.fnmatch(file,'week_[0123456789][0123456789].pkl'):
                 os.remove(self.data_path+"/"+file)
 
-
-
-
-
+                
