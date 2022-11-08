@@ -11,7 +11,7 @@ class Document(object):
         self.pages = pages
         self.docs = []
 
-class Week_minuts(object):
+class Week(object):
     def __init__(self,week_nb):
         self.table = np.zeros([7,24*60])
         self.docs=[]
@@ -61,7 +61,7 @@ class Calendar(object):
                 with open(self.data_path+'/'+week_path,'rb') as data:
                     week = pickle.load(data) 
             else :
-                week = Week_minuts(week_nb)
+                week = Week(week_nb)
             
             pages = week.addDocument(doc,minut_nb,hour_nb,day_nb,week_nb)
             self.save_week(week)   
