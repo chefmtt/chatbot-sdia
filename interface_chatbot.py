@@ -6,6 +6,7 @@ import json
 import random
 from datetime import datetime
 import agenda
+import interface_agenda
 import spacy
 import train_model
 from joblib import load
@@ -25,8 +26,8 @@ print("now =", now)
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
-# # CHARGER MODELE CHATBOT ENTRAINE
-#model = keras.models.load_model('chatbot_clf')
+# CHARGER MODELE CHATBOT ENTRAINE
+model = keras.models.load_model('chatbot_clf')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
@@ -185,18 +186,8 @@ from tkinter import *
 
 # NOUVELLE FENETRE AVEC CLIC DE BOUTON
 def openNewWindow():
-    # Toplevel object NOUVELLE FENETR
-    newWindow = Toplevel(root)
-
-    newWindow.title("Agenda")
-
-    newWindow.geometry("700x800")
-    newWindow.configure(bg="white")
-
-    Label(newWindow,
-          text="Agenda des impressions", bg="white").pack()
-    return newWindow
-
+    root.destroy()
+    interface_agenda.print_agenda()
 
 def send():
     global list_impr
