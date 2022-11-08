@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 import json
 import random
 from datetime import datetime
+# import Train_chatbot
 
 # DATE DU MOMENT ACTUEL
 now = datetime.now()
@@ -151,23 +152,23 @@ class impression(object):
 
 
 def clean_up_sentence(sentence):
-    # tokenize the pattern - splitting words into array
+    # TOKENIZATION
     sentence_words = nltk.word_tokenize(sentence)
-    # stemming every word - reducing to base form
+    # STEMMING
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
 
-# return bag of words array: 0 or 1 for words that exist in sentence
+# BOW ARRAY 0 OU 1
 def bag_of_words(sentence, words, show_details=True):
-    # tokenizing patterns
+    # TOKENISATION
     sentence_words = clean_up_sentence(sentence)
-    # bag of words - vocabulary matrix
+    # BOW, MATRICE DE VOCABULAIRE
     bag = [0] * len(words)
     for s in sentence_words:
         for i, word in enumerate(words):
             if word == s:
-                # assign 1 if current word is in the vocabulary position
+                # 1 SI LE MOT EST DANS LE VOCABULAIRE
                 bag[i] = 1
                 if show_details:
                     print("found in bag: %s" % word)
@@ -175,7 +176,6 @@ def bag_of_words(sentence, words, show_details=True):
 
 
 def predict_class(sentence):
-    # filter below  threshold predictions
     p = bag_of_words(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
     ERROR_THRESHOLD = 0.25
@@ -198,82 +198,23 @@ def getResponse(ints, intents_json):
     return result
 
 
-# Creating tkinter GUI
+# FENETRE
 from tkinter import *
 
-import webbrowser
-list_impr=[]
-def openAgenda():
-    new = 2 # open in a new tab, if possible
-    #open an HTML file on own computer
-    url = "schedule.html"
-    webbrowser.open(url,new=new)
 
-
-# function to open a new window on a button click
+# NOUVELLE FENETRE AVEC CLIC DE BOUTON
 def openNewWindow():
-    # Toplevel object which will
-    # be treated as a new window
+    # Toplevel object NOUVELLE FENETR
     newWindow = Toplevel(root)
 
-    # sets the title of the
-    # Toplevel widget
     newWindow.title("Agenda")
 
-    # sets the geometry of toplevel
     newWindow.geometry("700x800")
     newWindow.configure(bg="white")
 
-    # A Label widget to show in toplevel
     Label(newWindow,
           text="Agenda des impressions", bg="white").pack()
     return newWindow
-
-
-def add_impr_to_list(L, doc_name, nb_pages):
-    if (len(L) == 0):
-        name,today = get_today()
-
-        if name == "Saturday":
-            impr = impression(doc_name, nb_pages, 8*3600, [today[0] + 2, today[1] , today[2]], "Monday")
-        elif name == "Sunday":
-            impr = impression(doc_name, nb_pages, 8*3600, [today[0] + 1, today[1] , today[2]], "Monday")
-
-        else:
-            time = get_time()
-            if time>=8*3600 and time <= 18*3600:
-                impr = impression(doc_name, nb_pages, time, [today[0] , today[1] , today[2]], name)
-            elif time<8*3600:
-                impr = impression(doc_name, nb_pages, 8*3600, [today[0] , today[1] , today[2]], name)
-            else:
-                impr = impression(doc_name, nb_pages, 8*3600, [today[0]+1 , today[1] , today[2]], next_day[name])
-    else:
-        duree = nb_pages
-        for i in range( len(L)):
-            L[i].update_state()
-        if L[-1].state == "passe":
-            name,today = get_today()
-
-            if name == "Saturday":
-                impr = impression(doc_name, nb_pages, 8*3600, [today[0] + 2, today[1] , today[2]], "Monday")
-                impr.fix_date()
-            elif name == "Sunday":
-                impr = impression(doc_name, nb_pages, 8*3600, [today[0] + 1, today[1] , today[2]], "Monday")
-
-            else:
-                time = get_time()
-                if time>=8*3600 and time <= 18*3600:
-                    impr = impression(doc_name, nb_pages, time, [today[0] , today[1] , today[2]], name)
-                elif time<8*3600:
-                    impr = impression(doc_name, nb_pages, 8*3600, [today[0] , today[1] , today[2]], name)
-                else:
-                    impr = impression(doc_name, nb_pages, 8*3600, [today[0]+1 , today[1] , today[2]], next_day[name])
-        else:
-            finish_date_name, finish_date, finish_time = L[-1].get_finish_time()
-            impr = impression(doc_name, nb_pages, finish_time, finish_date, finish_date_name)
-    impr.fix_date()
-    impr.update_state()
-    L.append(impr)
 
 def send():
     global list_impr
@@ -290,10 +231,8 @@ def send():
         doc = re.search('doc[0-9]*', msg)
         nb_pages = re.search('\s+[0-9]+\s*', msg)
         new_impri="impression"
-        # Action à faire pour l'affichage de créneaux: ouvrir une new fenetre
         if ints[0]['intent'] == 'creneaux':
             ChatBox.insert(END, "PrintBot: " + res + '\n\n')
-            # openAgenda() #on a html file opened in browser
             Agenda_window = openNewWindow()
             List_impr_box=Text(Agenda_window, height="1000", width="1000", font="Arial", bg="white", bd=0)
             impressions = []
@@ -312,7 +251,6 @@ def send():
                 List_impr_box.insert(END,impressions[i])
             List_impr_box.place(x=50, y=50, height=800, width=800)
 
-        # Action à faire en impression: ajouter le document sur la liste des impressions
         elif ints[0]['intent'] == 'impression':
             no_doc_pages= "Veuillez bien spécifier le nom du document par \"doc\" suivi du numéro du document" \
                     " ainsi que le nombre de pages."
@@ -334,16 +272,15 @@ def send():
         ChatBox.yview(END)
 
 
-#=================================================================
-#Creating GUI window for chat
-#=================================================================
+# FENETRE POUR LE CHATBOT
+
 root = Tk()
 root.title("Printer Chatbot")
 root.geometry("400x500")
 root.resizable(width=FALSE, height=FALSE)
 
 
-# Create Chat window
+# FENETRE DE CHAT
 ChatBox = Text(root, bd=1, bg="black", height="8", width="50", font="Arial", )
 ChatBox.config(state=DISABLED)
 
@@ -351,24 +288,20 @@ ChatBox.config(state=DISABLED)
 scrollbar = Scrollbar(root, command=ChatBox.yview, cursor="heart")
 ChatBox['yscrollcommand'] = scrollbar.set
 
-# Create Button to send message
+# BOUTON POUR ENVOYER MESSAGES
 SendButton = Button(root, font=("Verdana", 13), text="Envoyer", width="10", height=3,
                     bd=1, bg="light blue", activebackground="#3c9d9b", fg='#000000',
                     command=send)
 
-# Create the box to enter message
+# BOX ENTREE MESSAGE
 EntryBox = Text(root, bd=1, bg="white", width="20", height="5", font="Arial")
 # EntryBox.bind("<Return>", send)
 
 
-# Place all components on the screen
+# PLACE DES COMPOSANTS SUR L'ECRAN
 scrollbar.place(x=376, y=6, height=386)
 ChatBox.place(x=6, y=6, height=386, width=370)
 EntryBox.place(x=6, y=401, height=90, width=265)
 SendButton.place(x=222, y=401, height=90)
 
 root.mainloop()
-
-#=================================================================
-#Creating GUI window for Timetable
-#=================================================================
