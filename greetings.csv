@@ -1,0 +1,46 @@
+" in the languages specified below
+
+Hello in Russian: Здравствуйте"
+" for different languages
+
+Hello in different languages:
+
+Hello in French: Bonjour
+Hello in Spanish: Hola
+Hello in German: Guten tag
+Hello in Italian: Ciao
+Hello in Japanese: Konnichiwa"
+"
+    typedef std::vector<std::string> vec_type;
+    vec_type vec_greetings;
+
+    vec_greetings.push_back(""Hello "");
+    vec_greetings.push_back(""Hi "");
+    vec_greetings.push_back(""Good day"");
+    vec_greetings.push_back(""Good morning "");
+    vec_greetings.push_back(""Good afternoon "");
+    vec_greetings.push_back(""Good evening "");
+
+    return vec_greetings;
+}
+
+void DisplayInfo(const TimeLog & tl) {
+    static int num = 0;
+
+    std::stringstream ss;
+    ss << ""Output "" << ++num << std::endl;
+    ss << ""=============================="" << std::endl;
+    ss << ""Number of entries = "" << tl.entries().size() << std::endl;
+    ss << ""Total time = "" <<std::fixed<<std::showpoint<<std::setprecision(2)<<tl.GetTotalTime() << "" sec.\n\n"";
+
+    std::"
+"
+$greeting_phrases = array();
+$greeting_phrases[] = 'Добро пожаловать, {name}.';
+$greeting_phrases[] = 'Здравствуйте, {name}.';
+$greeting_phrases[] = 'Уважаемый, {name}.';
+
+//Generate notification phrases
+$notification_phrases = array();
+$notification_phrases[] = 'На сайте набралось слишком много комментариев, они будут опубликованы"," comfortable: %comments%';
+$notification_phrases[] = 'Ожидается что", comfortable: %events_count% 
