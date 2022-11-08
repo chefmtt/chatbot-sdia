@@ -51,17 +51,9 @@ def print_agenda() :
 
             # données utilisées
             cal = agenda.Calendar("calendar")
-            ex = cal.add_document("Coucou", 9500)
-            ex = cal.add_document("Allo", 30000)
-            ex = cal.add_document("Enchante", 80000)
-            ex = cal.add_document("Merci", 30000)
-            ex = cal.add_document("Super", 9500)
-            ex = cal.add_document("Allo", 30000)
-            ex = cal.add_document("Enchante", 80000)
-            ex = cal.add_document("Merci", 30000)
             # dimension 1440x7
-            lst = np.transpose(cal.get_week(45))
-            noms_documents = cal.get_docs(45)
+            lst = np.transpose(cal.get_week(week))
+            noms_documents = cal.get_docs(week)
 
             # nombre lignes (horaires) et colonnes (jours) tableau affiché
             total_rows = 25

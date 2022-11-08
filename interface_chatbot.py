@@ -217,6 +217,7 @@ def send():
                     number_found += 1
                     nb_pages = word.text
             doc = re.search(r'\w+.(doc|docx|odf|pdf|jpg|png|jpeg|svg)$', msg, re.IGNORECASE)
+            calendar.add_document(str(doc), int(nb_pages))
 
             if doc is None or nb_pages is None:
                 ChatBox.insert(END, "PrintBot: " + no_doc_pages + '\n\n')
