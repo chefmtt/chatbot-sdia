@@ -1,6 +1,5 @@
 from tkinter import W
 import numpy as np
-import pandas as pd
 import datetime
 import os
 import fnmatch
@@ -93,15 +92,14 @@ class Calendar(object):
                 with open(self.data_path+'/'+week_path,'rb') as data:
                     week = pickle.load(data) 
             else :
-                week = Week(week_nb)
+                week = Week_minuts(week_nb)
             
-            pages = week.addDocument(doc,hour_nb,day_nb,week_nb)
+            pages = week.addDocument(doc,minut_nb,hour_nb,day_nb,week_nb)
             self.save_week(week)   
             doc = Document(title,pages)
             week_nb +=1
             print(pages)
         return pages
-        
         
     def save_week(self,week):
         file = "week_"+str(week.week_nb)+".pkl"
@@ -130,18 +128,6 @@ class Calendar(object):
             if fnmatch.fnmatch(file,'week_[0123456789][0123456789].pkl'):
                 os.remove(self.data_path+"/"+file)
 
-
-
-cal = Calendar("calendar")
-cal.reset()
-cal.add_document("docX",45000)
-cal.add_document("BlipBloup",12000)
-cal.add_document("Yannick Hervé",1)
-cal.add_document("BlipBloup",400000)
-print(cal.get_week(43))
-print(cal.get_week(44))
-print(cal.get_week(45))
-print(cal.list_weeks())
 
 
 
