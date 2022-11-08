@@ -11,37 +11,6 @@ class Document(object):
         self.pages = pages
         self.docs = []
 
-class Week(object):
-    def __init__(self,week_nb):
-        self.table = np.zeros([7,24])
-        self.docs=[]
-        self.week_nb = week_nb
-    
-    def addDocument(self,doc,hour,day,week):
-        date = datetime.datetime.now()
-        isocalendar = datetime.date(date.year, date.month, date.day).isocalendar()
-        current_week = isocalendar[1]
-        pages=doc.pages
-        title=doc.title
-        if title in self.docs:
-            doc_nb = self.docs.index(title)+1
-        else :
-            self.docs.append(title)
-            doc_nb = len(self.docs)
-        for d in range(0,5):
-            for h in range(4,20):
-                if (((current_week == week)and(d == day)and(h == hour)) or (week > current_week) or ((week == current_week) and (d > day)) or ((week == current_week) and (d == day) and (h > hour))):
-                    if pages == 0 :
-                        break
-                    if self.table[d,h] == 0:
-                        if pages > 3600 : 
-                            pages = pages - 3600
-                            self.table[d,h] = doc_nb
-                        else :
-                            pages = 0
-                            self.table[d,h] = doc_nb
-        return pages
-
 class Week_minuts(object):
     def __init__(self,week_nb):
         self.table = np.zeros([7,24*60])
@@ -114,6 +83,16 @@ class Calendar(object):
                     with open(self.data_path+'/'+file,'rb') as data:
                         week = pickle.load(data)
                     return week.table
+        return 0
+    
+    def get_docs(self,week):
+        for file in sorted(os.listdir(self.data_path)):
+            if fnmatch.fnmatch(file,'week_[0123456789][0123456789].pkl'):
+                if (int(file[5:7]) == week):
+                    print(week)
+                    with open(self.data_path+'/'+file,'rb') as data:
+                        week = pickle.load(data)
+                    return week.docs
         return 0
     
     def list_weeks(self):
