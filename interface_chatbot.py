@@ -164,8 +164,8 @@ class impression(object):
 def predict_class(sentence):
     sentence_embedded = train_model.process_text(sentence, mode="embed", preprocessed=False)
 
-    predict = model.predict(np.asarray([sentence_embedded]))
-    predicted_class = np.argmax(predict)
+    prediction = model.predict(np.asarray([sentence_embedded]))
+    predicted_class = np.argmax(prediction)
     predicted_class = label_encoder.inverse_transform([predicted_class])
     return predicted_class
 
