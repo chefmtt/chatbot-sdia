@@ -10,6 +10,7 @@ from keras.layers import LSTM
 from keras.layers import Dense, Input, Masking
 import tensorflow as tf
 from sklearn.preprocessing import LabelEncoder
+from joblib import dump
 
 nlp = spacy.load("en_core_web_lg")
 
@@ -120,3 +121,4 @@ if __name__ == '__main__':
     print(predicted_class)
 
     model.save("chatbot_clf")
+    dump(le, filename="classes_encoder")
