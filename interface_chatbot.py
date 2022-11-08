@@ -7,7 +7,7 @@ from tensorflow.keras.models import load_model
 import json
 import random
 from datetime import datetime
-# import Train_chatbot
+import agenda
 
 # DATE DU MOMENT ACTUEL
 now = datetime.now()
@@ -124,7 +124,7 @@ class impression(object):
         """
         if self.date[1] in months_31  and  self.date[0] > 31:
             if self.date[1] == 12:
-                self.date[0] = date[0] - 31
+                self.date[0] = self.date[0] - 31
                 self.date[1] = 1
                 self.date[2] += 1
             else:
@@ -133,13 +133,13 @@ class impression(object):
 
         elif self.date[1] == 2:
             if self.date[2] % 4 == 0  and  self.date[0] > 29:
-                self.date[0] = date[0] - 29
+                self.date[0] = self.date[0] - 29
                 self.date[1] += 1
             elif self.date[0] > 28:
-                self.date[0] = date[0] - 28
+                self.date[0] = self.date[0] - 28
 
         elif self.date[0] > 30:
-            self.date[0] = date[0] - 30
+            self.date[0] = self.date[0] - 30
             self.date[1] += 1
 
     def get_str_format(self):
@@ -220,6 +220,7 @@ def send():
     global list_impr
     msg = EntryBox.get("1.0", 'end-1c').strip()
     EntryBox.delete("0.0", END)
+    calendar = agenda.Calendar("calendar")
     if msg != '':
         ChatBox.config(state=NORMAL)
         ChatBox.insert(END, "Vous: " + msg + '\n\n')
@@ -262,7 +263,7 @@ def send():
             else:
 
                 ChatBox.insert(END, "PrintBot: " + res + '\n\n')
-                add_impr_to_list(list_impr, doc.group(0), int(nb_pages.group(0)))
+                calendar.add_document(list_impr, doc.group(0), int(nb_pages.group(0)))
 
 
         else:
@@ -273,7 +274,6 @@ def send():
 
 
 # FENETRE POUR LE CHATBOT
-
 root = Tk()
 root.title("Printer Chatbot")
 root.geometry("400x500")
