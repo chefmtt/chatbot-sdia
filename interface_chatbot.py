@@ -8,7 +8,7 @@ import json
 import random
 from datetime import datetime
 
-# datetime object containing current date and time
+# DATE DU MOMENT ACTUEL
 now = datetime.now()
 
 print("now =", now)
@@ -18,13 +18,13 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
 
-#the lemmatizer used for trainning
+# LEMMATIZER UTILISE POUR ENTRAINEMENT
 lemmatizer = WordNetLemmatizer()
 
-#loading the trained model
-model = load_model('chatbot_model.h5')
+# # CHARGER MODELE CHATBOT ENTRAINE
+# model = load_model('chatbot_model.h5')
 
-# load the data
+# CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
@@ -39,7 +39,7 @@ months_31 = [1,3,5,7,8,10,12]
 
 def get_time():
     """
-    get the time of the day in seconds
+    MOMENT DE LA JOURNEE EN SECONDES
     """
     now = datetime.now()
     time = now.strftime("%H:%M:%S")
@@ -49,7 +49,7 @@ def get_time():
 
 def get_today():
     """
-    get the day (d/m/Y)
+    OBTENIR LE JOUR (d/m/Y)
     """
     now = datetime.now()
     today = now.strftime("%d/%m/%Y")
@@ -61,7 +61,7 @@ def get_today():
 
 
 class impression(object):
-    """a class that describes a valid impression request"""
+    """UNE CLASSE QUI DECRIT UNE REQUETE D'IMPRESSION CORRECTE"""
 
     def __init__(self, doc_name,n_pages, start_time, date, date_name ):
 
@@ -97,7 +97,7 @@ class impression(object):
 
     def update_state(self):
         """
-        updates the state according to th actual time
+        MAJ DE L'ETAT SELON MOMENT ACTUEL
         """
         _,today = get_today()
         time = get_time()
@@ -116,10 +116,10 @@ class impression(object):
 
     def fix_date(self):
         """
-        fix dates to make sure dates are always in the format x/y/z
+        ETRE SUR QUE LES DATES ONT LE FORMAT x/y/z
 
-        with  x <=30 or 31 or 28 or 29 (depending on the year and the day)
-        and   y <= 12
+        AVEC  x <=30 OU 31 OU 28 OU 29 (SELON LE MOIS)
+        ET   y <= 12
         """
         if self.date[1] in months_31  and  self.date[0] > 31:
             if self.date[1] == 12:
@@ -143,7 +143,7 @@ class impression(object):
 
     def get_str_format(self):
         """
-        the string that describes the print request state
+        CHAINE QUI DECRIT L'ETAT DE LA REQUETE D'IMPRESSION
         """
 
         return "Impression de " + self.doc_name + ": " + str(self.n_pages) + "pages\n" + "    etat:" + self.state + "\n    debut impression:" +translate_day[self.date_name]+ " " + str(self.date[0]) + "/" + str(self.date[1])+ "/" +str(self.date[2]) + "\n    à l'heure:" + str(self.start_time//3600)+":"+str((self.start_time%3600)//60) + ":" + str((self.start_time%3600)%60) +"\n\n"
@@ -352,12 +352,12 @@ scrollbar = Scrollbar(root, command=ChatBox.yview, cursor="heart")
 ChatBox['yscrollcommand'] = scrollbar.set
 
 # Create Button to send message
-SendButton = Button(root, font=("Verdana", 13), text="Envoyer", width="12", height=5,
+SendButton = Button(root, font=("Verdana", 13), text="Envoyer", width="10", height=3,
                     bd=1, bg="light blue", activebackground="#3c9d9b", fg='#000000',
                     command=send)
 
 # Create the box to enter message
-EntryBox = Text(root, bd=1, bg="white", width="29", height="5", font="Arial")
+EntryBox = Text(root, bd=1, bg="white", width="20", height="5", font="Arial")
 # EntryBox.bind("<Return>", send)
 
 

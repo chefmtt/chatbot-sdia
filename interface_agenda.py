@@ -10,27 +10,27 @@ import agenda
 
 def callback1():
     global week
-    week = 42
+    week = 45
     gui.destroy()
 
 def callback2():
     global week
-    week = 43
+    week = 46
     gui.destroy()
 
 def callback3():
     global week
-    week = 44
+    week = 47
     gui.destroy()
 
 gui = Tk()
 v = IntVar
 gui.geometry('200x100')  
-btn1 = Button(gui, text = "42", command = callback1)
+btn1 = Button(gui, text = "45", command = callback1)
 btn1.pack()
-btn2 = Button(gui, text = "43", command = callback2)
+btn2 = Button(gui, text = "46", command = callback2)
 btn2.pack()
-btn3 = Button(gui, text = "44", command = callback3)
+btn3 = Button(gui, text = "47", command = callback3)
 btn3.pack()
 gui.mainloop()
 
