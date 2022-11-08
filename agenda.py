@@ -130,17 +130,5 @@ class Calendar(object):
 
 
 
-# cal = Calendar("calendar")
-# cal.reset()
-# cal.add_document("docX",45000)
-# cal.add_document("BlipBloup",12000)
-# cal.add_document("Yannick Hervé",1)
-# cal.add_document("BlipBloup",400000)
-# print(cal.get_week(43))
-# print(cal.get_week(44))
-# print(cal.get_week(45))
-# print(cal.list_weeks())
-
-
 
 
