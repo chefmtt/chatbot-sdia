@@ -96,7 +96,7 @@ class Table:
                         indice_minute = i + minute - 2
                         indice = int(lst[indice_minute][j-2])
 
-                        self.e = Entry(gui, width=10, fg=couleur(indice),
+                        self.e = Entry(gui, width=10, fg=couleur(indice-1),
                                         font=('Arial', 10, 'bold'))
 
                         self.e.grid(row=i, column=j)
