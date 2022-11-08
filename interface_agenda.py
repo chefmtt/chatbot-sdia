@@ -57,7 +57,7 @@ class Table:
         documents_print = cal.get_docs(week)
 
         # nombre lignes (horaires) et colonnes (jours) tableau affiché
-        total_rows = 24
+        total_rows = 25
         total_columns = 8
         print(total_rows)
         print(total_columns)
