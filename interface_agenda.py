@@ -45,6 +45,7 @@ def print_agenda() :
             cal = agenda.Calendar("calendar")
             lst = np.transpose(cal.get_week(week))
             print(lst)
+            documents_print = cal.get_docs(week)
 
             # nombre lignes et colonnes tableau affiché
             total_rows = len(lst) + 1
@@ -86,11 +87,13 @@ def print_agenda() :
                  
                         self.e.grid(row=i, column=j)
 
-                        if (lst[i-2][j-2]) == 0 :
+                        indice = lst[i-2][j-2]
+
+                        if indice == 0 :
                             self.e.insert(END, ' ')
                     
                         else :
-                            self.e.insert(END, '■■■■■■■■■')
+                            self.e.insert(END, documents_print[indice])
 
   
 
