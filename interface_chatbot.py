@@ -26,7 +26,7 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
 # # CHARGER MODELE CHATBOT ENTRAINE
-model = keras.models.load_model('chatbot_clf')
+#model = keras.models.load_model('chatbot_clf')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
@@ -260,7 +260,7 @@ def send():
 # FENETRE POUR LE CHATBOT
 root = Tk()
 root.title("Printer Chatbot")
-root.geometry("400x500")
+root.geometry("450x500")
 root.resizable(width=FALSE, height=FALSE)
 
 # FENETRE DE CHAT
@@ -284,7 +284,7 @@ EntryBox = Text(root, bd=1, bg="white", width="20", height="5", font="Arial")
 # PLACE DES COMPOSANTS SUR L'ECRAN
 scrollbar.place(x=376, y=6, height=386)
 ChatBox.place(x=6, y=6, height=386, width=370)
-EntryBox.place(x=6, y=401, height=90, width=265)
-SendButton.place(x=222, y=401, height=90)
+EntryBox.place(x=6, y=401, height=90, width=310)
+SendButton.place(x=322, y=401, height=90)
 
 root.mainloop()
