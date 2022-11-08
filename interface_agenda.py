@@ -9,6 +9,7 @@ import agenda
 # INTERFACE
 
 def print_agenda() :
+    
     def callback1():
         global week
         week = 45
