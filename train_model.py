@@ -6,6 +6,7 @@ import spacy
 from spacy.tokens import DocBin
 from sklearn.ensemble import RandomForestClassifier
 from joblib import dump
+from sklearn.model_selection import GridSearchCV
 
 nlp = spacy.load("en_core_web_lg")
 
@@ -74,6 +75,16 @@ if __name__ == '__main__':
 
     clf = RandomForestClassifier()
 
-    clf.fit(X_train_embedded_avg, y=y_train)
+    params_grid = {
+        'n_estimators': [200],
+        'max_features': [None, 'sqrt', 'log2'],
+        'max_depth': [8, 10, 12],
+        'criterion': ['gini', 'entropy', 'log_loss']
+    }
 
-    dump(clf, filename="clf_chatbot")
+    gs = GridSearchCV(clf, params_grid, cv=3, n_jobs=1, refit="balanced_accuracy", scoring=["balanced_accuracy", "f1_macro"], verbose=2)
+    gs.fit(X_train_embedded_avg, y=y_train)
+    print(gs.best_params_)
+    print(gs.best_score_)
+
+    dump(gs.best_estimator_, filename="clf_chatbot")

@@ -27,7 +27,7 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
 # CHARGER MODELE CHATBOT ENTRAINE
-model = keras.models.load_model('chatbot_clf')
+model = load('clf_chatbot')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
@@ -162,9 +162,10 @@ class impression(object):
 
 
 def predict_class(sentence):
-    sentence_embedded = train_model.process_text("Print the schedule", preprocessed=False, mode="embed")
+    sentence_embedded = train_model.process_text(sentence, preprocessed=False, mode="embed")
     sentence_averaged = (np.mean(sentence_embedded, axis=0)).reshape(1, -1)
     y_pred = model.predict(sentence_averaged)
+    print(y_pred)
     return y_pred[0]
 
 
@@ -206,8 +207,8 @@ def send():
             Agenda_window = openNewWindow()
 
         elif intent_tag == 'impression':
-            no_doc_pages = "Veuillez bien spécifier le nom du document par \"doc.file_type\" suivi du numéro du document" \
-                           " ainsi que le nombre de pages."
+            no_doc_pages = "Please make sure to input the document name and its file extension, along with the number " \
+                           "of pages, and ONLY that number. "
             number_found = 0
             nb_pages = ""
             for word in nlp(msg).ents:
