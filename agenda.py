@@ -107,4 +107,8 @@ class Calendar(object):
             if fnmatch.fnmatch(file,'week_[0123456789][0123456789].pkl'):
                 os.remove(self.data_path+"/"+file)
 
-                
+
+cal = Calendar("calendar")
+cal.reset()
+cal.add_document("Le pttit prince",50000)
+print(cal.get_week(45).shape)
