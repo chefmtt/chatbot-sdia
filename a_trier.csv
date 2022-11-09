@@ -144,15 +144,6 @@ Goodbye, Goodbye
 "Hello, how are you doing?",Greeting
 "Thank you for your help.",Gratitude
 "Goodbye, have a nice day.",Goodbye
-
-"Hello, and welcome to our website!"Greeting
-"Thank you for your interest in our company!"Gratitude
-"We appreciate your business!"Gratitude
-"Thank you for your time and consideration."Gratitude
-"We look forward to hearing from you soon."Greeting
-"Thank you for considering us for your next project."Gratitude
-"Goodbye, and we hope to see you soon!"Goodbye
-
 Hello,,Greeting
 Hi,,Greeting
 Good morning,,Greeting
@@ -177,105 +168,59 @@ Have a nice day,,Goodbye
 "Thanks."Gratitude
 "Thank you."Gratitude
 "I appreciate it."Gratitude
-
 "May the force be with you",Greeting
 "I would like to express my gratitude for your help",Gratitude
 "Thank you for your time",Gratitude
 " Goodbye and good luck",Goodbye
-
 "Thank you for your time." Gratitude
-
 "It was nice meeting you." Goodbye
-
-"I'm looking forward to speaking with you soon." Greeting
-
 Hello, Greeting
-
 Thank you very much, Gratitude
-
- Goodbye, Goodbye
-
- "Hello, how are you doing?",Greeting
+Goodbye, Goodbye
+"Hello, how are you doing?",Greeting
 "Thank you for your help.",Gratitude
 "Goodbye, have a great day!",Goodbye
-
 "Thanks so much for your help!",Gratitude
-
 "Thank you for your help." Gratitude
-
 "I'm sorry for the inconvenience." Gratitude
-
 "Thank you for your patience." Gratitude
-
 "Thank you for your time." Gratitude
-
 "I appreciate your help." Gratitude
-
 "Thanks for your help." Gratitude
-
 "Thank you." Gratitude
-
 "Thanks." Gratitude
-
 "Thank you very much." Gratitude
-
 "I'm grateful for your help." Gratitude
-
 "Thank you so much." Gratitude
-
 Hey there!,Greeting
 Thanks for your help!,Gratitude
 Take care!,Goodbye
-
-
 "Hello, how are you doing?",Greeting
 "Thank you for your help.",Gratitude
 "Goodbye, best of luck to you.",Goodbye
 Hi, how are you?,Greeting
-
 I'm doing great, thanks for asking!,Gratitude
-
 Bye for now!,Goodbye
-
 Hello, how are you doing?",Greeting
 "Thank you for your help.",Gratitude
 " Goodbye and thanks for all the fish!",Goodbye
-
-
 "Hello, how are you doing?",Greeting
 "Thank you so much for your help!",Gratitude
 "Goodbye, have a great day!",Goodbye
-
-
 Hi,Greeting
-
 Thanks so much,Gratitude
-
 Bye for now,Goodbye
-
-
 Hello,Greeting
-
 my friend,Greeting
-
 It's nice to see you,Greeting
-
 Thank you so much,Gratitude
-
 I really appreciate it,Gratitude
-
 Thank you for your help,Gratitude
-
- Goodbye,Goodbye
-
- "Hello, how are you?","Greeting"
+Goodbye,Goodbye
+"Hello, how are you?","Greeting"
 "Thank you so much for your help!","Gratitude"
 " Goodbye and good luck!","Goodbye"
-
 "Thank you for your help." Gratitude
-
 "Please let me know if there's anything I can do to help you." Gratitude
-
 "Hi, how are you doing?" Greeting
-
 "Goodbye, have a great day!" Goodbye

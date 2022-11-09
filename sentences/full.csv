@@ -1,3 +1,4 @@
+text,intent
 Hi,greeting
 Hello!,greeting
 Goodbye!,greeting
@@ -106,12 +107,12 @@ The print is cut off.,complaint
 Part of the print is missing.,complaint
 There is a crease in the print.,complaint
 I need help,help
-Can you help me ?,help
+Can you help me ?,help
 I need help,help
 I don't know what to do,help
 I'm stuck,help
 I need some guidance,help
-Can you tell me what to do ?,help
+Can you tell me what to do ?,help
 I'm lost,help
 I don't understand,help
 "Help me, please.",help
