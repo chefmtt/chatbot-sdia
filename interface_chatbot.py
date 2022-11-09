@@ -27,7 +27,7 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
 # CHARGER MODELE CHATBOT ENTRAINE
-model = load('clf_chatbot')
+model = load('clf_chatbot_final')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
