@@ -2,13 +2,10 @@ import json
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import spacy
 from spacy.tokens import DocBin
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
 from joblib import dump
-import sklearn
 
 nlp = spacy.load("en_core_web_lg")
 

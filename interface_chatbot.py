@@ -162,12 +162,10 @@ class impression(object):
 
 
 def predict_class(sentence):
-    sentence_embedded = train_model.process_text(sentence, mode="embed", preprocessed=False)
-
-    prediction = model.predict(np.asarray([sentence_embedded]))
-    predicted_class = np.argmax(prediction)
-    predicted_class = label_encoder.inverse_transform([predicted_class])
-    return predicted_class
+    sentence_embedded = train_model.process_text("Print the schedule", preprocessed=False, mode="embed")
+    sentence_averaged = (np.mean(sentence_embedded, axis=0)).reshape(1, -1)
+    y_pred = model.predict(sentence_averaged)
+    return y_pred[0]
 
 
 def getResponse(tag, intents_json):
