@@ -215,7 +215,7 @@ def send():
                 if word.label_ == "CARDINAL":
                     number_found += 1
                     nb_pages = word.text
-            doc = re.search(r'\w+.(doc|docx|odf|pdf|jpg|png|jpeg|svg)$', msg, re.IGNORECASE)
+            doc = re.search("\w+\.(doc|docx|odf|pdf|jpg|png|jpeg|svg)", msg).group(0)
             calendar.add_document(str(doc), int(nb_pages))
 
             if doc is None or nb_pages is None:
@@ -223,7 +223,7 @@ def send():
             else:
 
                 ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
-                calendar.add_document(list_impr, doc.group(0), int(nb_pages.group(0)))
+                calendar.add_document(doc.group(0), int(nb_pages.group(0)))
 
         else:
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
