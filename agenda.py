@@ -28,7 +28,7 @@ class Week(object):
             self.docs.append(title)
             doc_nb = len(self.docs)
         for d in range(0,5):
-            for h in range(4,20):
+            for h in range(7,20):
                 for m in range(0,59):
                     current_pos = (h*60) + m -1
                     if (((current_week == week)and(d == day)and(h >= hour)and(m > minut)) or (week > current_week) or ((week == current_week) and (d > day)) or ((week == current_week) and (d == day) and (h > hour))):
