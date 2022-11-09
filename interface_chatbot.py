@@ -203,11 +203,11 @@ def send():
         answer = getResponse(intent_tag, intents)
 
         new_impri = "impression"
-        if intent_tag is 'check_schedule':
+        if intent_tag == 'check_schedule':
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
             Agenda_window = openNewWindow()
 
-        elif intent_tag is 'impression':
+        elif intent_tag == 'impression':
             no_doc_pages = "Veuillez bien spécifier le nom du document par \"doc.file_type\" suivi du numéro du document" \
                            " ainsi que le nombre de pages."
             number_found = 0
@@ -217,6 +217,7 @@ def send():
                     number_found += 1
                     nb_pages = word.text
             doc = re.search(r'\w+.(doc|docx|odf|pdf|jpg|png|jpeg|svg)$', msg, re.IGNORECASE)
+            calendar.add_document(str(doc), int(nb_pages))
 
             if doc is None or nb_pages is None:
                 ChatBox.insert(END, "PrintBot: " + no_doc_pages + '\n\n')
