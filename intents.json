@@ -1,23 +1,19 @@
 {"intents": [
     {"tag": "greeting",
      "patterns": ["Hi", "Hey", "Is anyone there ?", "Hello", "Good morning !"],
-     "responses": ["Hello", "Hi", "Hi there"]
+     "responses": ["Hello", "Hi", "Hi there", "Hello, and welcome to our website!"]
     },
     {"tag": "goodbye",
      "patterns": ["Bye", "See you later", "Goodbye"],
      "responses": ["See you later", "Have a nice day", "Bye ! Come back again"]
     },
-    {"tag": "thanks",
+    {"tag": "gratitude",
      "patterns": ["Thanks", "Thank you", "That's great", "Thanks for the help", "Perfect, thank you very much"],
-     "responses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!"]
+     "responses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!", "We appreciate your business!", "Thank you for your interest in our company!"]
     },
     {"tag": "about",
-     "patterns": ["Who are you ?", "What are you ?", "What is this"],
+     "patterns": ["Who are you ?", "What are you ?", "What is this", "What is your name ?", "What should I call you ?", "What is your name ?"],
      "responses": ["I'm Printy, your bot assistant. State your document name and the number of pages you want printed and I will make a reservation for you"]
-    },
-    {"tag": "name",
-    "patterns": ["What is your name ?", "What should I call you ?", "What is your name ?"],
-    "responses": ["You can call me Printy.", "I'm Printy!", "Just call me Printy"]
     },
     {"tag": "help",
     "patterns": ["Could you help me ?", "Give me a hand please", "Can you help ?", "What can you do for me ?", "I need help"],
@@ -30,6 +26,10 @@
     {"tag": "complaint",
     "patterns": ["I have a complaint", "I want to raise a complaint", "I am not satisfied"],
     "responses": ["Please state your complaint, we will reach out to you. Sorry for any inconvenience."]
+    },
+    {"tag": "check_schedule",
+    "patterns": ["I want to check the schedule"],
+    "responses": ["Sure, here is the schedule."]
     }
 ]
 }

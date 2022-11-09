@@ -2,15 +2,11 @@ import json
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import spacy
 from spacy.tokens import DocBin
-from keras.models import Sequential
-from keras.layers import LSTM
-from keras.layers import Dense, Input, Masking
-import tensorflow as tf
-from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
 from joblib import dump
+from sklearn.model_selection import GridSearchCV
 
 nlp = spacy.load("en_core_web_lg")
 
@@ -60,7 +56,9 @@ if __name__ == '__main__':
     for intent in intents['intents']:
         for pattern in intent['patterns']:
             data.append([pattern, intent['tag']])
-    df = pd.DataFrame(data, columns=['text', 'intent'])
+    df_json = pd.DataFrame(data, columns=['text', 'intent'])
+    df_csv = pd.read_csv("sentences/full.csv")
+    df = pd.concat([df_json, df_csv], axis=0)
 
     file_name_spacy = 'preprocessed_dataset_chatbot.spacy'
     save_preprocessed(raw_text=df["text"], save_path=file_name_spacy)
@@ -69,56 +67,24 @@ if __name__ == '__main__':
     doc_bin = DocBin().from_disk(file_name_spacy)
     df["doc"] = list(doc_bin.get_docs(nlp.vocab))
 
-    train, test = train_test_split(df, test_size=0.2)
+    X_train = df["doc"].reset_index(drop=True)
+    y_train = df["intent"].reset_index(drop=True)
 
-    X_train = train["doc"].reset_index(drop=True)
-    y_train = train["intent"].reset_index(drop=True)
-
-    X_test = test["doc"].reset_index(drop=True)
-    y_test = test["intent"].reset_index(drop=True)
-
-    X_train_embedded = train["doc"].apply(process_text, args=("embed", True,))
+    X_train_embedded = df["doc"].apply(process_text, args=("embed", True,))
     X_train_embedded_avg = X_train_embedded.apply(np.mean, axis=0).apply(pd.Series)
 
-    X_test_embedded = test["doc"].apply(process_text, args=("embed", True,))
-    X_test_embedded_avg = X_test_embedded.apply(np.mean, axis=0).apply(pd.Series)
+    clf = RandomForestClassifier()
 
-    import tensorflow as tf
+    params_grid = {
+        'n_estimators': [200],
+        'max_features': [None, 'sqrt', 'log2'],
+        'max_depth': [8, 10, 12],
+        'criterion': ['gini', 'entropy', 'log_loss']
+    }
 
-    max_words = 30  # Max number of words in a sentence
+    gs = GridSearchCV(clf, params_grid, cv=3, n_jobs=1, refit="balanced_accuracy", scoring=["balanced_accuracy", "f1_macro"], verbose=2)
+    gs.fit(X_train_embedded_avg, y=y_train)
+    print(gs.best_params_)
+    print(gs.best_score_)
 
-    raw_inputs = X_train_embedded
-    padded_inputs = tf.keras.preprocessing.sequence.pad_sequences(
-        X_train_embedded,
-        maxlen=max_words,
-        padding="pre",
-        truncating="pre",
-        dtype="float32",
-    )
-
-    le = LabelEncoder()
-    y_encoded = le.fit_transform(y_train)
-    number_classes = len(y_train.unique())
-
-    model = Sequential()
-    # model.add(Embedding(vocab_size,300,input_length=max_words))
-    model.add(Masking(mask_value=0, input_shape=(None, 300)))
-    model.add(LSTM(units=128,
-                   return_sequences=False,
-                   input_shape=(None, 300)
-                   ))
-    model.add(Dense(number_classes, activation='softmax'))
-
-    print(model.summary())
-    model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-    history = model.fit(tf.convert_to_tensor(padded_inputs), y_encoded, epochs=10)
-
-    test = process_text("tell me your name", mode="embed", preprocessed=False)
-    predict = model.predict(np.asarray([test]))
-    predicted_class = np.argmax(predict)
-    predicted_class = le.inverse_transform([predicted_class])
-    print(predicted_class)
-
-    model.save("chatbot_clf")
-    dump(le, filename="classes_encoder")
+    dump(gs.best_estimator_, filename="clf_chatbot")

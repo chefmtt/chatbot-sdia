@@ -1,0 +1,246 @@
+text,intent
+Hi,greeting
+Hello!,greeting
+Goodbye!,greeting
+See you later!,greeting
+Have a nice day!,greeting
+Good luck!,greeting
+I hope to see you soon.,greeting
+Take care!,greeting
+You're always welcome.,greeting
+You're in my thoughts.,greeting
+"As always,  it was a pleasure. ",greeting
+Until we meet again.,greeting
+Until next time!,greeting
+I'll be thinking of you.,greeting
+Stay safe!,greeting
+God bless you.,greeting
+All the best!,greeting
+What is your name?,about
+What should I call you?,about
+"Your name, please.",about
+What do people call you?,about
+What do I call you?,about
+How can I address you?,about
+What moniker do you prefer?,about
+What is the name you go by?,about
+What name do you prefer?,about
+What do you like to be called?,about
+What should I call you?,about
+How would you like me to address you?,about
+What name would you prefer I use?,about
+Is there a name you prefer I use?,about
+What name do you like to be called?,about
+Which name do you prefer I use?,about
+See you later.,goodbye
+Bye.,goodbye
+Farewell.,goodbye
+Adieu.,goodbye
+Au revoir.,goodbye
+Ciao.,goodbye
+Aloha.,goodbye
+Goodbye.,goodbye
+So long.,goodbye
+Take care,goodbye
+Bye,goodbye
+Byebye,goodbye
+Goodbye,goodbye
+See you later,goodbye
+Take care,goodbye
+Cya,goodbye
+Laters,goodbye
+Toodles,goodbye
+Cheerio,goodbye
+Hasta la vista,goodbye
+Bye,goodbye
+Sayonara,goodbye
+Tschüss,goodbye
+Goodbye,goodbye
+see u,goodbye
+nice to meet u,goodbye
+Nice to meet you,goodbye
+I'm very disappointed with the product.,complaint
+I expected better quality.,complaint
+I'm not happy with this at all.,complaint
+This is not what I wanted.,complaint
+I'm not pleased with this.,complaint
+This isn't what I ordered.,complaint
+I'm dissatisfied with this.,complaint
+I'm unhappy with this purchase.,complaint
+This product is defective.,complaint
+I returned this product.,complaint
+I exchange this product.,complaint
+I'm getting a refund for this.,complaint
+I'm taking this back.,complaint
+I'm not satisfied with this.,complaint
+This isn't good enough.,complaint
+This is unacceptable.,complaint
+I want a replacement.,complaint
+This isn't right.,complaint
+This is wrong.,complaint
+This isn't what I paid for.,complaint
+I'm not getting what I paid for.,complaint
+I didn't get what I ordered.,complaint
+This isn't what I was promised.,complaint
+What I received wasn't what I was expecting.,complaint
+This is disappointing.,complaint
+Very disappointing.,complaint
+This doesn't meet my expectations.,complaint
+This failed to meet my expectations.,complaint
+My expectations were not met.,complaint
+This doesn't live up to the hype.,complaint
+The hype surrounding this was not deserved.,complaint
+This doesn't deserve the positive reviews it's gotten.,complaint
+The reviews for this are not accurate.,complaint
+I'm not happy with the quality of the printing.,complaint
+The printing job was not up to my standards.,complaint
+I'm not satisfied with the color of the print.,complaint
+The print is too light.,complaint
+The print is too dark.,complaint
+The print is blurry.,complaint
+The print is smudged.,complaint
+There is a line through the print.,complaint
+The print is crooked.,complaint
+The print is too small.,complaint
+The print is too big.,complaint
+The print is cut off.,complaint
+Part of the print is missing.,complaint
+There is a crease in the print.,complaint
+I need help,help
+Can you help me ?,help
+I need help,help
+I don't know what to do,help
+I'm stuck,help
+I need some guidance,help
+Can you tell me what to do ?,help
+I'm lost,help
+I don't understand,help
+"Help me, please.",help
+I don't know what's going on.,help
+This is confusing.,help
+Can you explain it to me?,help
+I'm not sure what I'm supposed to do.,help
+What do I do next?,help
+How do I do this?,help
+I don't know how to do this.,help
+I need help with this.,help
+Can you walk me through this?,help
+Can you help me with this?,help
+I need some assistance with this.,help
+This isn't what I asked for.,help
+I'm not sure how to do this.,help
+This isn't what I wanted.,help
+Can you show me how to do this?,help
+I don't understand how to do this.,help
+My document is called letter.doc and it is 1 page long. Can you print it?,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it for me?,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it?,printing_request
+Hi! I need to print my boarding pass. The document is called boarding_pass.pdf and it is 1 page long.,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it?,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it for me?,printing_request
+Can you please print my document? It is called letter.doc and it is 1 page long.,printing_request
+Hi! Can you print my document? It's called letter.doc and it's 1 page long.,printing_request
+My document is called budget.xls and it is 100 pages long. Can you print it?,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it for me?,printing_request
+Hello! My document is called memo.doc and it is 1 page long. Can you print it for me?,printing_request
+Can you print my document called letter.doc? It is only 1 page long.,printing_request
+My document is called letter.doc and it is 1 page long. Can you print it for me?,printing_request
+Can you print my letter? The document is called letter.doc and it is 1 page long.,printing_request
+Can you print my 100 pages document? It is called thesis.docx,printing_request
+My document is called paper.doc and it is 500 pages long. Can you print it?,printing_request
+"Print document.doc, 1 page.",printing_request
+"Print document.doc, 500 pages.",printing_request
+"Print thesis.pdf, 73 pages.",printing_request
+Document to print : document.doc 12 pages.,printing_request
+"I want this document today : doc.docx, 11 pages.",printing_request
+I need to print a document.,printing_request
+Printing Request,printing_request
+Print my documents,printing_request
+Print my thesis,printing_request
+"DocumentA, 12 pages",printing_request
+"doc.docx, 11 pages",printing_request
+Print doc.pdf,printing_request
+"Print The Bible, 1281 pages .",printing_request
+Can I print?,printing_request
+Is the printer available?,printing_request
+Can I access to the printer?,printing_request
+How do I use the printer?,printing_request
+I want to print hdIUHUGUBDHSWDB.pdf 2568748pages,printing_request
+print my document it is 861 pages long,printing_request
+I need printing,printing_request
+How can I print my doc?,printing_request
+Print this to me :,printing_request
+Put this in the printer :,printing_request
+Print :,printing_request
+Please print :,printing_request
+I want to print thebiggestnameadocumentneverhadintheentirehistoryofhumanityandfarbefore.pdf 1 page.,printing_request
+Can you print the user guide of the printer?,printing_request
+Can I see your schedule for next week?,check_schedule
+I'd like to take a look at your calendar for next week.,check_schedule
+Can you print the schedule for next week?,check_schedule
+Can you print the schedule of the week?,check_schedule
+Can I see the schedule of next week's printings?,check_schedule
+Show me the schedule,check_schedule
+Show me the schedule for week 25.,check_schedule
+What is the schedule for next week?,check_schedule
+Let me see the schedule,check_schedule
+What is the schedule for the next two weeks?,check_schedule
+What is the schedule for this week?,check_schedule
+Can you print the schedule for the next week?,check_schedule
+Can I see the schedule of the next week?,check_schedule
+Can I see your schedule for next week?,check_schedule
+Can you send me the schedule for next week?,check_schedule
+Can you give me the schedule for next week?,check_schedule
+Can I have the schedule for next week?,check_schedule
+Thank you,gratitude
+Thank you so much,gratitude
+I'm grateful for your help,gratitude
+Thank you for your time,gratitude
+Thank you for your patience,gratitude
+Thank you for being understanding,gratitude
+Thank you for being supportive,gratitude
+Thank you for being there for me,gratitude
+Thank you for being a great friend,gratitude
+Thank you for always being there for me,gratitude
+Thank you for being such a great listener,gratitude
+Thank you for always being so understanding,gratitude
+Thank you for always being so supportive,gratitude
+Thank you for always being such a great friend,gratitude
+Thank you for always being there for me,gratitude
+Thank you for being such a great listener,gratitude
+Thank you for being so understanding,gratitude
+"Thank you for being so supportive""",gratitude
+Thank you so much for your help!,gratitude
+I really appreciate your help.,gratitude
+Thank you for taking the time to help me.,gratitude
+Thank you for your patience in helping me.,gratitude
+Thank you for walking me through the process.,gratitude
+I'm grateful for your help.,gratitude
+"Thank you, I couldn't have done it without you.",gratitude
+Thank you for being here for me.,gratitude
+Thank you for helping me out.,gratitude
+"I owe you one, thank you.",gratitude
+Thanks a million!,gratitude
+"You're a lifesaver, thank you.",gratitude
+Thanks for having my back.,gratitude
+Thanks for being my support.,gratitude
+"I'm glad I have you to rely on"","" thank you.",gratitude
+"You're always there for me"","" thank you.",gratitude
+Thanks for being my friend.,gratitude
+Thank you for being understanding.,gratitude
+I appreciate your support.,gratitude
+I'm thankful for you.,gratitude
+Thank you for being understanding.,gratitude
+I appreciate your support.,gratitude
+I'm thankful for you.,gratitude
+Thank you for your kindness.,gratitude
+Thank you for your patience.,gratitude
+Thank you for your help.,gratitude
+Thank you for sharing your time with me.,gratitude
+Thank you for your consideration.,gratitude
+Thank you for your partnership.,gratitude
+Thank you for your care.,gratitude
+Thank you for being my friend.,gratitude
+Thank you for everything.,gratitude
+You are the best!,gratitude
+I really appreciate you!,gratitude
