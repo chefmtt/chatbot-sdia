@@ -27,7 +27,7 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 print("date and time =", dt_string)
 
 # CHARGER MODELE CHATBOT ENTRAINE
-model = load('clf_chatbot_final')
+model = load('clf_chatbot')
 
 # CHARGER LES DONNEES
 intents = json.loads(open('intents.json').read())
@@ -189,7 +189,6 @@ def openNewWindow():
     interface_agenda.print_agenda()
 
 def send():
-    global list_impr
     msg = EntryBox.get("1.0", 'end-1c').strip()
     EntryBox.delete("0.0", END)
     calendar = agenda.Calendar("calendar")
@@ -216,14 +215,13 @@ def send():
                     number_found += 1
                     nb_pages = word.text
             doc = re.search("\w+\.(doc|docx|odf|pdf|jpg|png|jpeg|svg)", msg).group(0)
-            calendar.add_document(str(doc), int(nb_pages))
 
             if doc is None or nb_pages is None:
                 ChatBox.insert(END, "PrintBot: " + no_doc_pages + '\n\n')
             else:
 
                 ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
-                calendar.add_document(doc.group(0), int(nb_pages.group(0)))
+                calendar.add_document(doc.group(0), int(nb_pages))
 
         else:
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
