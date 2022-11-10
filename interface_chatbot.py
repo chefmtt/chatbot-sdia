@@ -189,7 +189,6 @@ def openNewWindow():
     interface_agenda.print_agenda()
 
 def send():
-    global list_impr
     msg = EntryBox.get("1.0", 'end-1c').strip()
     EntryBox.delete("0.0", END)
     calendar = agenda.Calendar("calendar")
@@ -219,12 +218,13 @@ def send():
                     
             doc = re.search("\w+\.(doc|docx|odf|pdf|jpg|png|jpeg|svg)", msg).group(0)
 
+
             if doc is None or nb_pages == "":
                 ChatBox.insert(END, "PrintBot: " + no_doc_pages + '\n\n')
             else:
 
                 ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
-                calendar.add_document(doc.group(0), int(nb_pages.group(0)))
+                calendar.add_document(doc.group(0), int(nb_pages))
 
         else:
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
