@@ -216,21 +216,26 @@ def send():
                     number_found += 1
                     nb_pages = word.text
                     
-            doc = re.search("\w+\.(doc|docx|odf|pdf|jpg|png|jpeg|svg)", msg).group(0)
-
+            doc = re.search("\w+\.(doc|docx|odf|pdf|jpg|png|jpeg|svg)", msg)
+            if doc != None :
+                doc = doc.group(0)
+            print(doc,nb_pages)
 
             if doc is None or nb_pages == "":
                 ChatBox.insert(END, "PrintBot: " + no_doc_pages + '\n\n')
             else:
 
                 ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
-                calendar.add_document(doc.group(0), int(nb_pages))
+                calendar.add_document(doc, int(nb_pages))
 
         else:
             ChatBox.insert(END, "PrintBot: " + answer + '\n\n')
 
         ChatBox.config(state=DISABLED)
         ChatBox.yview(END)
+
+cal = agenda.Calendar("calendar")
+cal.reset()
 
 
 # FENETRE POUR LE CHATBOT
