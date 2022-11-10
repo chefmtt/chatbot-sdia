@@ -193,6 +193,12 @@ def send():
     EntryBox.delete("0.0", END)
     calendar = agenda.Calendar("calendar")
     if msg != '':
+        
+        if msg == "reset":
+            cal = agenda.Calendar('calendar')
+            cal.reset()
+            ChatBox.insert(END, "PrintBot: " + "Calendar successfuflly reset" + '\n\n')
+        
         ChatBox.config(state=NORMAL)
         ChatBox.insert(END, "Vous: " + msg + '\n\n')
         ChatBox.config(foreground="#f0fafa", font=("Verdana", 12))
@@ -234,8 +240,6 @@ def send():
         ChatBox.config(state=DISABLED)
         ChatBox.yview(END)
 
-cal = agenda.Calendar("calendar")
-cal.reset()
 
 
 # FENETRE POUR LE CHATBOT
